@@ -12,5 +12,6 @@ $loader->registerFiles([
 ])
 ->registerNamespaces([
 	'App\Library' => $config->application->libraryDir,
+	'Pheanstalk' => $config->application->vendorDir.'/pheanstalk/',
 ])
 ->register();

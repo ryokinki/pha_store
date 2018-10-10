@@ -43,6 +43,7 @@ $baseConfig['application'] = [
 	'viewsDir'       => APP_PATH . '/views/',
 	'pluginsDir'     => APP_PATH . '/plugins/',
 	'libraryDir'     => APP_PATH . '/library/',
+	'vendorDir'     => APP_PATH . '/vendor/',
 	'utilsDir'     => APP_PATH . '/utils/',
 	'cacheDir'       => BASE_PATH . '/cache/',
 	'baseUri'        => '/index.php',
