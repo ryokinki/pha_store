@@ -14,7 +14,4 @@ $loader->registerFiles([
 	'Queue' => $config->application->vendorDir.'/queue/',
 	'Job' => $config->application->appDir.'/job/',
 	'App\Task' => $config->application->appDir.'/tasks/',
-]);
-if (defined('CONSOLE')) {
-}
-$loader->register();
+])->register();

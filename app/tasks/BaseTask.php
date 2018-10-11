@@ -14,4 +14,10 @@ class BaseTask extends \Phalcon\CLI\Task
 		 $dispatcher = $di->get('dispatcher');
 		 return $dispatcher->getOption($name, null, $default);
 	}
+
+	public function getOptions() {
+		 $di = $this->di;
+		 $dispatcher = $di->get('dispatcher');
+		 return $dispatcher->getOptions();
+	}
 }

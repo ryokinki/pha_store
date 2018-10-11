@@ -60,7 +60,7 @@ class BeanstalkQueue {
 		}
 		$job = $this->instance->reserve($timeout);
 		if ($job === false) {
-			return;
+			return -1;
 		}
 		return new BeanstalkJob($this, $job);
 	}

@@ -91,6 +91,3 @@ $di->setShared('queue', function () use($queueConfig)  {
 
     return $queue;
 });
-
-
-

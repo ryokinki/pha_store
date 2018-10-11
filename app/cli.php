@@ -34,8 +34,8 @@ $di->setShared('config', function () {
     return include APP_PATH . "/config/config.php";
 });
 $dispatcher = $di->get('dispatcher');
-$dispatcher->setActionSuffix("");
-$dispatcher->setDefaultNamespace("\\App\\Task");
+$dispatcher->setActionSuffix('');
+$dispatcher->setDefaultNamespace('\\App\\Task');
 
 include APP_PATH . '/config/router.php';
 $config = $di->getConfig();

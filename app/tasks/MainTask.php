@@ -9,7 +9,8 @@
 namespace App\Task;
 class MainTask extends BaseTask
 {
-	public function main() {
+	public function main($params) {
 	     echo "\n默认task默认Action \n";
+		 dd($params, $this->getOptions());
 	}
 }
