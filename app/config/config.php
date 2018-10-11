@@ -20,7 +20,15 @@ foreach ($list as $key => $fileName) {
 	}
 }
 
-$env = $_SERVER['ENV'];
+if (isset($_SERVER['ENV'])) {
+	$env = $_SERVER['ENV'];
+	defined('ENV') || define('ENV', $env);
+}
+
+if (empty($env)) {
+	$env = 'local';
+}
+
 if ($env != 'local') {
 	$envDir = APP_PATH.'/config/'.$env.'/';
 	$list = scandir($envDir);

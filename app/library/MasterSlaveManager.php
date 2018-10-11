@@ -33,8 +33,6 @@ class MasterSlaveManager {
 				}
 				$config = $allReads->$index;
 			}
-			var_dump($config);
-			die;
 			
 			$class = 'Phalcon\Db\Adapter\Pdo\\' . $config->adapter;
 			$params = [

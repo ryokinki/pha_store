@@ -81,3 +81,16 @@ $di->setShared('session', function () {
 
     return $session;
 });
+
+/**
+ * 队列
+ */
+$queueConfig = $di->getConfig()->queue->toArray();
+$di->setShared('queue', function () use($queueConfig)  {
+    $queue = new \Queue\Queue($queueConfig);
+
+    return $queue;
+});
+
+
+

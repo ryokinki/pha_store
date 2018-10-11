@@ -1,8 +1,6 @@
 <?php
 $loader = new \Phalcon\Loader();
-/**
- * We're a registering a set of directories taken from the configuration file
- */
+
 $loader->registerFiles([
 	$config->application->utilsDir.'/func.php',
 ])
@@ -13,5 +11,10 @@ $loader->registerFiles([
 ->registerNamespaces([
 	'App\Library' => $config->application->libraryDir,
 	'Pheanstalk' => $config->application->vendorDir.'/pheanstalk/',
-])
-->register();
+	'Queue' => $config->application->vendorDir.'/queue/',
+	'Job' => $config->application->appDir.'/job/',
+	'App\Task' => $config->application->appDir.'/tasks/',
+]);
+if (defined('CONSOLE')) {
+}
+$loader->register();

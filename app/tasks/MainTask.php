@@ -1,35 +1,15 @@
 <?php
 // +------------------------------------------------------------------
-// | File: Queue.php
+// | File: MainTask.php
 // +------------------------------------------------------------------
 // | Author: jinhui - <ryokinki@163.com>
 // +------------------------------------------------------------------
-// | Create: 2018-10-10 18:18:14
+// | Create: 2018-10-11 17:41:08
 // +------------------------------------------------------------------
-
-namespace App\Library;
-
-//队列策略类
-class Queue {
-
-	public function __construct() {
-	}
-
-	public function push() {
-	}
-
-	public function pop() {
-	}
-
-	public function later() {
-	}
-
-	public function retry() {
-	}
-
-	public function del() {
-	}
-
-	public function release() {
+namespace App\Task;
+class MainTask extends BaseTask
+{
+	public function main() {
+	     echo "\n默认task默认Action \n";
 	}
 }
