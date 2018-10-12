@@ -22,7 +22,7 @@ class BeanstalkJob {
 
 	public function getData() {
 		if (is_object($this->job)) {
-			return json_decode($this->job->getData());
+			return json_decode($this->job->getData(), true);
 		}
 		return false;
 	}

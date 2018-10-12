@@ -9,6 +9,13 @@ $env = 'local';
 $envDir = APP_PATH.'/config/'.$env.'/';
 
 $baseConfig = [];
+
+$envConfig = include APP_PATH.'/config/'.$env.'/config.php';
+foreach($envConfig as $k => $v) {
+	$baseConfig[$k] = $v;
+}
+
+/*
 $list = scandir($envDir);
 foreach ($list as $key => $fileName) {
 	if ($fileName == '.' || $fileName == '..') {
@@ -19,6 +26,7 @@ foreach ($list as $key => $fileName) {
 		$baseConfig[$k] = $v;
 	}
 }
+*/
 
 if (isset($_SERVER['ENV'])) {
 	$env = $_SERVER['ENV'];
@@ -30,6 +38,7 @@ if (empty($env)) {
 defined('ENV') || define('ENV', $env);
 
 if ($env != 'local') {
+	/*
 	$envDir = APP_PATH.'/config/'.$env.'/';
 	$list = scandir($envDir);
 	foreach ($list as $key => $fileName) {
@@ -40,6 +49,12 @@ if ($env != 'local') {
 		foreach($envConfig as $k => $v) {
 			$baseConfig[$k] = $v;
 		}
+	}
+	*/
+
+	$envConfig = include APP_PATH.'/config/'.$env.'/config.php';
+	foreach($envConfig as $k => $v) {
+		$baseConfig[$k] = $v;
 	}
 }
 

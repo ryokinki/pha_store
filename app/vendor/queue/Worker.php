@@ -45,7 +45,6 @@ class Worker {
 				}
 			}
 			$data = $job->getData();
-			//$job->delete();
 
 			$action = $data['action'];
 			unset($data['action']);
@@ -55,11 +54,11 @@ class Worker {
 				$method = $cache[$action][1];
 				$obj->callJob($queue, $job, $data, $method);
 			} else {
-				$ex = explode($action, '@');
+				$ex = explode('@', $action);
 				$name = $ex[0];
 				$needNameSpace = strpos($name, '\\') === false;
 				if ($needNameSpace) {
-					$cls = '\\App\Job\\'.$name;
+					$cls = '\\Job\\'.$name;
 				} else {
 					$cls = $name;
 				}

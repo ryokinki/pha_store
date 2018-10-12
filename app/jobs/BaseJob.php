@@ -1,5 +1,13 @@
 <?php
 // +------------------------------------------------------------------
+// | File: jobs/BaseJob.php
+// +------------------------------------------------------------------
+// | Author: jinhui - <ryokinki@163.com>
+// +------------------------------------------------------------------
+// | Create: 2018-10-12 15:48:43
+// +------------------------------------------------------------------
+
+// +------------------------------------------------------------------
 // | File: TestJob.php
 // +------------------------------------------------------------------
 // | Author: jinhui - <ryokinki@163.com>
@@ -10,9 +18,8 @@
 namespace Job;
 class BaseJob {
 
-	public function callJob($method, $queue, $job, $data) {
-		new \Job\JobExceptionRetry();
-		var_dump($data);
+	public function callJob($queue, $job, $data, $method) {
+		//new \Job\Exception\JobExceptionRetry(1);
 		try {
 			$this->{$method}($data);
 			$job->delete();

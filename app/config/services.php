@@ -29,20 +29,7 @@ $di->setShared('view', function () {
     $view->setViewsDir($config->application->viewsDir);
 
     $view->registerEngines([
-        '.volt' => function ($view) {
-            $config = $this->getConfig();
-
-            $volt = new VoltEngine($view, $this);
-
-            $volt->setOptions([
-                'compiledPath' => $config->application->cacheDir,
-                'compiledSeparator' => '_'
-            ]);
-
-            return $volt;
-        },
         '.phtml' => PhpEngine::class
-
     ]);
 
     return $view;
@@ -56,13 +43,16 @@ $di->setShared('modelsManager', new \App\Library\ModelsManager());
 /**
  * If the configuration specify the use of metadata adapter use it or use memory otherwise
  */
+/*
 $di->setShared('modelsMetadata', function () {
     return new MetaDataAdapter();
 });
+*/
 
 /**
  * Register the session flash service with the Twitter Bootstrap classes
  */
+/*
 $di->set('flash', function () {
     return new Flash([
         'error'   => 'alert alert-danger',
@@ -71,22 +61,25 @@ $di->set('flash', function () {
         'warning' => 'alert alert-warning'
     ]);
 });
+*/
 
 /**
  * Start the session the first time some component request the session service
  */
+/*
 $di->setShared('session', function () {
     $session = new SessionAdapter();
     $session->start();
 
     return $session;
 });
+*/
 
 /**
  * 队列
  */
 $queueConfig = $di->getConfig()->queue->toArray();
-$di->setShared('queue', function () use($queueConfig)  {
+	$di->setShared('queue', function () use($queueConfig)  {
     $queue = new \Queue\Queue($queueConfig);
 
     return $queue;
