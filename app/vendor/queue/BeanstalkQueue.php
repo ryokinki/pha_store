@@ -62,6 +62,6 @@ class BeanstalkQueue {
 		if ($job === false) {
 			return -1;
 		}
-		return new BeanstalkJob($this, $job);
+		return new BeanstalkJob($this->instance, $job);
 	}
 }

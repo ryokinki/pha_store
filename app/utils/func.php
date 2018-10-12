@@ -7,6 +7,7 @@
 // | Create: 2018-10-09 23:50:32
 // +------------------------------------------------------------------
 
+//打印多个参数调试
 function dd() {
 	foreach (func_get_args() as $params) {
 		$console = defined('CONSOLE');
@@ -30,15 +31,25 @@ function dd() {
 	}
 	die;
 }
+//快速打印exception
+if (!function_exists('msge')) {
+    function msge($e) {
+        $msg = 'file: '.$e->getFile().' line: '.$e->getLine().' msg: '.$e->getMessage();
+        return $msg;
+    }
+}
 
+//获取全局Ioc注入器
 function getDI() {
 	return \Phalcon\Di::getDefault();
 }
 
+//获取cli App
 function getConsole() {
 	return new \Phalcon\CLI\Console();
 }
 
+//task互相调用
 function callTask($task, $action, $params = [], $options = []) {
 	$di = getDI();
 	$dispatcher = $di->get('dispatcher');

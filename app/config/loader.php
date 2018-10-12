@@ -12,6 +12,7 @@ $loader->registerFiles([
 	'App\Library' => $config->application->libraryDir,
 	'Pheanstalk' => $config->application->vendorDir.'/pheanstalk/',
 	'Queue' => $config->application->vendorDir.'/queue/',
-	'Job' => $config->application->appDir.'/job/',
+	'Job' => $config->application->appDir.'/jobs/',
+	'Job\Exception' => $config->application->appDir.'/jobs/exceptions/',
 	'App\Task' => $config->application->appDir.'/tasks/',
 ])->register();

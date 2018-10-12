@@ -8,6 +8,7 @@
 // +------------------------------------------------------------------
 
 namespace Queue;
+use App\Library\Status;
 
 class Worker {
 
@@ -26,9 +27,15 @@ class Worker {
 		$queue = $this->queue;
 		$options = $this->options;
 		$cycle = false;
+
 		$deamon = $this->daemon;
-		while (($data = $queue->pop($options)) !== false) {
-			if ($data == -1) {
+		while (($job = $queue->pop($options)) !== false) {
+			pcntl_signal_dispatch();
+			if (Status::shouldStop()) {
+				echo 'cli 优雅重启\n';
+				break;
+			}
+			if (is_scalar($job) && $job == -1) {
 				echo "no \n";
 				usleep(200000);
 				if ($deamon) {
@@ -37,14 +44,16 @@ class Worker {
 					break;
 				}
 			}
-			$data = json_encode($data, true);
+			$data = $job->getData();
+			//$job->delete();
+
 			$action = $data['action'];
 			unset($data['action']);
 
 			if (isset($cache[$action])) {
 				$obj = $cache[$action][0];
 				$method = $cache[$action][1];
-				$obj->{$method}($queue);
+				$obj->callJob($queue, $job, $data, $method);
 			} else {
 				$ex = explode($action, '@');
 				$name = $ex[0];
@@ -56,11 +65,12 @@ class Worker {
 				}
 				$method = $ex[1];
 				$obj = new $cls();
-				$obj->{$method}($queue);
+				$obj->callJob($queue, $job, $data, $method);
 			}
 			if (!$deamon) {
 				break;
 			}
 		}
+		exit(0);
 	}
 }

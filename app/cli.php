@@ -43,6 +43,10 @@ $config = $di->getConfig();
 include APP_PATH . '/config/loader.php';
 
 include APP_PATH . '/config/services.php';
+//优雅重启
+pcntl_signal(SIGHUP, function($signo) {
+	\App\Library\Status::reload();
+});
 
 try {
 	$console->setArgument($argv);

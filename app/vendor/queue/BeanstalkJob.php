@@ -20,6 +20,13 @@ class BeanstalkJob {
 		$this->job = $job;
 	}
 
+	public function getData() {
+		if (is_object($this->job)) {
+			return json_decode($this->job->getData());
+		}
+		return false;
+	}
+
 	/*
 	 * 延迟
 	 */

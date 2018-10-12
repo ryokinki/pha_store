@@ -1,16 +1,12 @@
 <?php
 // +------------------------------------------------------------------
-// | File: TestJob.php
+// | File: JobExceptionRetry.php
 // +------------------------------------------------------------------
 // | Author: jinhui - <ryokinki@163.com>
 // +------------------------------------------------------------------
 // | Create: 2018-10-11 15:56:39
 // +------------------------------------------------------------------
 
-namespace Job;
-class TestJob extends BaseJob {
-
-	public function test($data) {
-		var_dump($data);
-	}
+namespace Job\Exception;
+class JobExceptionRetry extends JobExceptionBase {
 }
