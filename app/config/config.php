@@ -22,12 +22,12 @@ foreach ($list as $key => $fileName) {
 
 if (isset($_SERVER['ENV'])) {
 	$env = $_SERVER['ENV'];
-	defined('ENV') || define('ENV', $env);
 }
 
 if (empty($env)) {
 	$env = 'local';
 }
+defined('ENV') || define('ENV', $env);
 
 if ($env != 'local') {
 	$envDir = APP_PATH.'/config/'.$env.'/';

@@ -38,4 +38,5 @@ return [
 			'port' => '11300',
 		],
 	],
+	'log_path' => '/home/work/log/applog',
 ];
